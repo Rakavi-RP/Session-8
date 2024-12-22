@@ -26,8 +26,8 @@ The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 classes, with 6
 ├── Session8.ipynb       # Entire Colab code with logs
 ├── dataloader.py        # Handles data loading and augmentations
 ├── model.py             # Defines the CNN architecture
-├── train.py             # Training logic
-├── main.py              # Combines all components
+├── train.py             # Defines functions for model training and testing
+├── main.py              # Runs model testing and training
 
 ```
 
@@ -35,7 +35,7 @@ The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 classes, with 6
 
 The CNN architecture consists of four convolutional blocks, each followed by Batch Normalization, ReLU activation, and Dropout. Depthwise separable and dilated convolutions are also utilized. Global Average Pooling (GAP) is applied before the final output layer.
 
-## BLOCK DETAILS
+## Block Details
 ```bash
 | Block           | Operation Details                                 | Input Size    | Output Size   |
 |-----------------|---------------------------------------------------|---------------|---------------|
