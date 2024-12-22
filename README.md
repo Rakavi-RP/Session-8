@@ -9,11 +9,15 @@ This project implements a Convolutional Neural Network (CNN) for image classific
 The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 classes, with 6,000 images per class. There are 50,000 training images and 10,000 test images. Classes include:Airplane,Automobile,Bird,Cat,Deer,Dog,Frog,Horse,Ship,Truck.
 
 ## Requirements
- -Python 3.7+
- -PyTorch 1.10+
- -Albumentations 1.3.0
- -TorchSummary
- -tqdm
+ Python 3.7+
+ 
+ PyTorch 1.10+
+ 
+ Albumentations 1.3.0
+ 
+ TorchSummary
+ 
+ tqdm
 
 ## Project Structure
 
@@ -33,14 +37,14 @@ The CNN architecture consists of four convolutional blocks, each followed by Bat
 
 ## BLOCK DETAILS
 ```bash
-| Block           | Operation Details                                  | Input Size    | Output Size   |
-|------------------|---------------------------------------------------|---------------|---------------|
+| Block           | Operation Details                                 | Input Size    | Output Size   |
+|-----------------|---------------------------------------------------|---------------|---------------|
 | **Input Layer** | -                                                 | (3, 32, 32)   | (3, 32, 32)   |
 | **C1 Block**    | Conv2d -> BatchNorm2d -> ReLU -> Dropout          | (3, 32, 32)   | (32, 16, 16)  |
 | **C2 Block**    | Conv2d -> BatchNorm2d -> ReLU -> Dropout          | (32, 16, 16)  | (48, 8, 8)    |
 | **C3 Block**    | Conv2d -> BatchNorm2d -> ReLU -> Dropout          | (48, 8, 8)    | (16, 4, 4)    |
 | **C4 Block**    | Depthwise Separable Conv -> BatchNorm2d -> ReLU   | (16, 4, 4)    | (64, 4, 4)    |
-| **Global Avg Pooling** | AdaptiveAvgPool2d((1, 1))                     | (64, 4, 4)    | (64, 1, 1)    |
+| **GAP**         | AdaptiveAvgPool2d((1, 1))                         | (64, 4, 4)    | (64, 1, 1)    |
 | **Flatten**     | Tensor reshaped to [batch_size, 64]               | (64, 1, 1)    | (64)          |
 | **Output Layer**| Log-Softmax Activation                            | (64)          | (10)          |
 
@@ -120,10 +124,13 @@ Estimated Total Size (MB): 3.04
 
 ## Hyperparameters
 
--Optimizer: Adam (Learning Rate: 0.005, Weight Decay: 1e-4)
--Scheduler: ReduceLROnPlateau (Factor: 0.75, Patience: 3)
--Batch Size: 128 (or 64 if CUDA unavailable)
--Epochs: 150
+Optimizer: Adam (Learning Rate: 0.005, Weight Decay: 1e-4)
+
+Scheduler: ReduceLROnPlateau (Factor: 0.75, Patience: 3)
+
+Batch Size: 128 (or 64 if CUDA unavailable)
+
+Epochs: 150
 
 ## Logs
 
